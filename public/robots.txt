@@ -1,0 +1,7 @@
+# Políticas e seus recursos não têm bloqueio de rastreamento.
+# O restante do site continua em prévia até a aprovação da publicação.
+User-agent: *
+Allow: /privacidade/
+Allow: /exclusao-de-dados/
+Allow: /assets/
+Disallow: /
