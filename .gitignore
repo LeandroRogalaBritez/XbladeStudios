@@ -6,3 +6,35 @@ node_modules/
 .env
 .env.*
 artifacts/
+
+# Notas e arquivos privados de trabalho
+.private/
+.vscode/
+.idea/
+.codex/
+.agents/
+*.log
+*.bak
+*.tmp
+
+# Credenciais e certificados privados
+.npmrc
+.pypirc
+.netrc
+.git-credentials
+credentials.json
+service-account*.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Pacotes de jogos e saídas de build
+*.apk
+*.aab
+*.exe
+*.zip
+dist/
+build/

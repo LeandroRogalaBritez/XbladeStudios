@@ -79,14 +79,14 @@ Abra [http://127.0.0.1:4174/XbladeStudios/](http://127.0.0.1:4174/XbladeStudios/
 | `public/assets/` | Marca, estilos, menu e imagens |
 | `public/en/` | Versão completa do site em inglês |
 | `tools/`, `tests/` | Prévia, pacote e verificações |
-| `docs/` | Fontes das artes, inventário e orientações |
+| `docs/` | Créditos das artes e orientações de publicação |
 | `artifacts/` | Saídas e capturas ignoradas pelo Git |
 
 O código do site não usa analytics, anúncios, cookies opcionais, formulários, contas, armazenamento do navegador, fontes externas ou vídeos incorporados. A infraestrutura Pages pode tratar dados técnicos das requisições conforme sua política.
 
 Para adicionar um jogo, copie um `article.game-card` no catálogo nas plataformas corretas, informe arte e URLs reais e descreva os serviços daquela versão. Alerta: Terra aparece apenas em Android. Lançamentos Android permanecem em preparação enquanto não houver links públicos de loja.
 
-A política geral se aplica aos jogos que a vinculam e às práticas descritas. Novos SDKs, mediação, contas, compras, nuvem própria ou direcionamento infantil exigem revisão antes do lançamento. Veja [o inventário](docs/PRIVACY-INVENTORY.md). Os projetos dos jogos não foram alterados; o link dentro dos apps ainda deve ser integrado e testado.
+A política geral se aplica aos jogos que a vinculam e às práticas descritas. Novos SDKs, mediação, contas, compras, nuvem própria ou direcionamento infantil exigem revisão antes do lançamento. Confira as [orientações de publicação](docs/GOOGLE-PLAY.md) e teste o link dentro dos aplicativos.
 
 Contato público: `leandrorogalabritezltda@gmail.com`. Artes em [ASSETS.md](docs/ASSETS.md). Cabeçalhos e rodapés são replicados entre páginas; atualize todas as ocorrências. Ao alterar CSS, atualize o sufixo `?v=` para evitar cache antigo.
 
@@ -125,3 +125,11 @@ Consultadas em 15/10/2026:
 - [Google Play: dados do usuário](https://support.google.com/googleplay/android-developer/answer/10144311?hl=pt-BR) e [URL da política](https://support.google.com/googleplay/android-developer/answer/9859455?hl=pt-BR#privacy_policy).
 
 Confirme o comportamento dos binários finais, declarações das lojas e acesso HTTPS público antes de cadastrar a política. Testes locais não comprovam aprovação das lojas.
+
+## Arquivos públicos e privados
+
+Este repositório contém somente o site, suas ferramentas, testes e documentação de manutenção. O workflow publica apenas o pacote gerado a partir de `public/`.
+
+Notas internas, capturas e dados de trabalho devem ficar em `.private/` ou `artifacts/`, ignorados pelo Git. Não adicione credenciais, certificados privados, arquivos de conta de serviço ou pacotes dos jogos. O `.gitignore` inclui essas categorias; ele não remove arquivos que já tenham sido registrados em commits anteriores.
+
+O nome do desenvolvedor e o e-mail de atendimento presentes no site são informações públicas de contato e identificação. Para preservar um e-mail pessoal nos próximos commits, configure o endereço `noreply` fornecido pelo GitHub nas preferências de e-mail da conta.
