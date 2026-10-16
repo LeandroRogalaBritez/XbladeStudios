@@ -2,7 +2,9 @@
 
 A Xblade Studios utilizará **um único endereço de Política de Privacidade para seus jogos**. No GitHub Pages deste projeto, o endereço esperado é `https://leandrorogalabritez.github.io/XbladeStudios/privacidade/`, disponível após a primeira implantação bem-sucedida.
 
-O documento identifica o estúdio e descreve dados locais, Google AdMob/UMP, Unity, Steam, contato, compartilhamento, segurança, retenção e direitos. As diferenças de cada versão estão descritas por serviços e plataformas; o catálogo em `/jogos/` informa os jogos, as plataformas e os serviços verificados.
+O documento identifica o estúdio e descreve, em linguagem direta, dados locais, Google AdMob/UMP, Unity quando utilizada, Steam, site e suporte, compartilhamento, segurança, retenção e direitos. As diferenças de cada versão estão descritas por serviços e plataformas; o catálogo em `/jogos/` informa os jogos, as plataformas e os serviços verificados. Android é gratuito com AdMob e sem compras internas nas versões atuais; serviços e transações Steam ficam na plataforma.
+
+O site inteiro também está disponível em inglês. A política equivalente fica em `https://leandrorogalabritez.github.io/XbladeStudios/en/privacy/` e os termos em `/en/terms/`. O seletor PT-BR / EN preserva a página; cada documento pode ser lido diretamente, sem login, JavaScript ou escolha prévia de idioma. A URL portuguesa existente permanece válida.
 
 O Google exige que a política seja aplicável ao app, identifique o desenvolvedor ou o aplicativo e divulgue suas práticas. Essa organização compartilhada foi escolhida para facilitar a manutenção dos jogos do mesmo estúdio. Não é uma dispensa de descrever diferenças ou atualizar o texto quando houver mudanças.
 

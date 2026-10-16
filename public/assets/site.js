@@ -3,6 +3,7 @@
 document.documentElement.classList.add("js");
 const toggle = document.querySelector(".menu-toggle");
 const navigation = document.querySelector("#navigation");
+const isEnglish = document.documentElement.lang === "en";
 if (toggle && navigation) {
   toggle.hidden = false;
   const close = () => {
@@ -13,7 +14,7 @@ if (toggle && navigation) {
   toggle.addEventListener("click", () => {
     const opened = navigation.classList.toggle("open");
     toggle.setAttribute("aria-expanded", String(opened));
-    toggle.textContent = opened ? "Fechar −" : "Menu +";
+    toggle.textContent = opened ? (isEnglish ? "Close −" : "Fechar −") : "Menu +";
   });
   navigation.addEventListener("click", (event) => {
     if (event.target.closest("a")) close();

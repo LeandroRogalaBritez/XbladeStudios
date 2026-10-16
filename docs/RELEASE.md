@@ -1,14 +1,15 @@
 # Estado da entrega — 15/10/2026
 
-Site em HTML, CSS e JavaScript mínimo. Remoto GitHub `LeandroRogalaBritez/XbladeStudios`, branch `main`. Publicação preparada por GitHub Actions; o repositório foi encontrado privado e com Pages desativado. A primeira implantação depende da ativação do Pages e da compatibilidade do plano/visibilidade.
+Site em HTML, CSS e JavaScript mínimo, com versões completas PT-BR e EN. Remoto GitHub `LeandroRogalaBritez/XbladeStudios`, branch `main`. O repositório está público e GitHub Pages está ativo. A execução `38833639146` implantou a versão anterior com sucesso; esta atualização simplifica os documentos e acrescenta o site em inglês.
 
 ## Estrutura atual
 
 - Apresentação institucional sem lista fixa de títulos.
 - Catálogo separado em `/jogos/`, organizado por PC/Steam e Android.
 - Alerta: Terra incluído apenas em Android, conforme orientação do usuário, embora o projeto também possua variantes técnicas para outras plataformas.
-- Uma política geral dos jogos em `/privacidade/`, com seções por serviços e plataforma.
-- Política do site separada; suporte e orientações sobre dados falam dos jogos do estúdio.
+- Uma política em `/privacidade/` e sua equivalente `/en/privacy/`, reunindo jogos, site e suporte em sete seções. O texto em português passou de 1.675 para 687 palavras.
+- Termos em `/termos/` e `/en/terms/`, para jogos Android gratuitos com AdMob e sem compras internas nas versões atuais, remetendo serviços e transações Steam à plataforma.
+- Inicial, catálogo, suporte, orientações sobre dados e páginas de compatibilidade traduzidos. Seletor de idioma preserva a página equivalente e funciona sem JavaScript.
 - Caminhos antigos de privacidade preservados com redirecionamento HTML no pacote do GitHub Pages e link acessível sem JavaScript.
 - As versões Android estão identificadas como em preparação; não foram fornecidas URLs públicas de Google Play.
 - Artes copiadas e otimizadas dos próprios projetos. Originais e projetos dos jogos permanecem intactos.
@@ -26,8 +27,8 @@ A revisão de fontes dos três jogos identificou os componentes e as diferenças
 - [ ] Obter links públicos das versões Android quando estiverem disponíveis.
 - [x] Preparar workflow GitHub Actions com validação, pacote estático e implantação Pages.
 - [x] Gerar caminhos para subdiretório, metadados absolutos, sitemap e indexação no pacote de produção.
-- [ ] Ativar Pages com origem GitHub Actions; confirmar plano compatível com repositório privado ou autorizar mudança de visibilidade.
-- [ ] Confirmar primeira implantação e endereço final no GitHub.
+- [x] Pages ativado e repositório público, verificados após configuração pelo usuário.
+- [x] Primeira implantação bem-sucedida no GitHub; site em `https://leandrorogalabritez.github.io/XbladeStudios/`.
 - [ ] Verificar HTTPS, leitura sem login e acesso por outras redes/regiões.
 - [ ] Inserir a mesma URL geral de privacidade dentro de cada app e cadastrá-la nas lojas.
 - [ ] Conferir consentimento e declarações por aplicativo nos painéis.
@@ -53,3 +54,9 @@ Os testes locais não comprovam disponibilidade mundial, aprovação de loja ou 
 Workflow enviado para `main` no commit `c7a0ea0`. A [execução 38833385749](https://github.com/LeandroRogalaBritez/XbladeStudios/actions/runs/38833385749) passou na validação de páginas e nos seis testes em Ubuntu/Python 3.13. A preparação parou em `actions/configure-pages` porque o site Pages não existe/está desativado (API retornou `Not Found`). O deploy não foi executado.
 
 Ative **Settings → Pages → Source: GitHub Actions**, com plano/visibilidade compatíveis, e execute o workflow manualmente. O navegador disponível estava sem sessão GitHub; nenhuma configuração da conta ou visibilidade foi alterada. O pacote também foi conferido localmente em `/XbladeStudios/`: imagens e estilos carregaram, a URL antiga encaminhou à política geral e a 404 em rota profunda retornou ao início corretamente.
+
+## Atualização de idioma e simplificação
+
+Estado posterior: Pages ativo, repositório público e primeira implantação concluída (`38833639146`). A política única mantém as informações de coleta pelo AdMob e pelos componentes realmente identificados, sem acrescentar serviços do site usado como referência. Os antigos documentos separados de site e AdMob apresentam links às seções correspondentes da política única.
+
+As 22 páginas passaram na validação estática. Oito testes cobrem, além da publicação, traduções ausentes, idioma incorreto, links recíprocos PT-BR/EN, alternates absolutos, 404 inglesa fora da indexação e redirecionamentos antigos em inglês. Inicial, política e catálogo foram conferidos em 320 px; o seletor permanece acessível com o menu móvel fechado. O menu em inglês abre com “Close” e fecha por Escape.

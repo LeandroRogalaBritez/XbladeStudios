@@ -11,6 +11,8 @@ import xml.etree.ElementTree as ET
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 from check import check
 from prepare_pages import prepare, validate_url, SOURCE
+from locales import PAGE_PAIRS, route
+from html.parser import HTMLParser
 
 
 class PagesTests(unittest.TestCase):
@@ -69,6 +71,48 @@ class PagesTests(unittest.TestCase):
             html = (self.output / f"privacidade/{slug}/index.html").read_text(encoding="utf-8")
             self.assertIn('http-equiv="refresh" content="0; url=/Studio/privacidade/"', html)
             self.assertIn('href="/Studio/privacidade/"', html)
+
+    def test_translations_keep_the_same_page_and_publish_absolute_alternates(self):
+        self.publish("https://example.github.io/Studio")
+        class Links(HTMLParser):
+            def __init__(self, html):
+                super().__init__()
+                self.languages, self.alternates = {}, {}
+                self.feed(html)
+
+            def handle_starttag(self, tag, attrs):
+                attrs = dict(attrs)
+                if tag == "a" and "hreflang" in attrs:
+                    self.languages[attrs["hreflang"]] = attrs["href"]
+                if tag == "link" and attrs.get("rel") == "alternate":
+                    self.alternates[attrs["hreflang"]] = attrs["href"]
+
+        for portuguese, english in PAGE_PAIRS.items():
+            for filename, lang in ((portuguese, "pt-BR"), (english, "en")):
+                with self.subTest(page=filename):
+                    html = (self.output / filename).read_text(encoding="utf-8")
+                    self.assertIn(f'<html lang="{lang}">', html)
+                    links = Links(html)
+                    for language, translated in (("pt-BR", portuguese), ("en", english)):
+                        self.assertEqual(links.languages[language], "/Studio" + route(translated))
+                        self.assertEqual(links.alternates[language], "https://example.github.io/Studio" + route(translated))
+        error = (self.output / "en/404.html").read_text(encoding="utf-8")
+        self.assertIn('href="/Studio/en/"', error)
+        self.assertIn('content="noindex, follow"', error)
+        old = (self.output / "en/privacy/purr-box/index.html").read_text(encoding="utf-8")
+        self.assertIn('http-equiv="refresh" content="0; url=/Studio/en/privacy/"', old)
+
+    def test_checker_rejects_a_missing_translation_or_wrong_language(self):
+        self.publish("https://example.github.io/Studio")
+        page = self.output / "en/privacy/index.html"
+        page.write_text(page.read_text(encoding="utf-8").replace('lang="en"', 'lang="pt-BR"'), encoding="utf-8")
+        with redirect_stdout(StringIO()) as result:
+            self.assertEqual(check(self.output, "/Studio", production=True), 1)
+        self.assertIn("idioma incorreto", result.getvalue())
+        page.unlink()
+        with redirect_stdout(StringIO()) as result:
+            self.assertEqual(check(self.output, "/Studio", production=True), 1)
+        self.assertIn("Tradução ausente", result.getvalue())
 
     def test_does_not_overwrite_sources_or_existing_files(self):
         with self.assertRaises(ValueError):

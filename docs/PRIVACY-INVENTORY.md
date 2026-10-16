@@ -21,3 +21,9 @@ Os IDs públicos de anúncios encontrados no código não foram usados para dedu
 Registre plataforma, pacote, serviços ativos, dados locais, permissões, destinatários, consentimento, contas e compras. Atualize o detalhe de serviços no cartão de cada plataforma. Se o comportamento não estiver descrito na política geral, revise-a antes da distribuição. Não copie a declaração de um jogo para outro sem conferir os componentes.
 
 As mensagens de suporte usam o Gmail público já divulgado. Os critérios operacionais de conservação devem ser confirmados pelo responsável. Os jogos e seus painéis não foram modificados nesta entrega.
+
+## Simplificação e idiomas
+
+O usuário confirmou jogos Android gratuitos, com AdMob e sem vendas próprias; na Steam, os serviços da plataforma são usados diretamente. A política e os termos foram simplificados para esse escopo, sem regras de compras internas inexistentes ou de comércio eletrônico no site. A menção breve aos componentes Unity permanece porque foi identificada nas fontes e não é substituída pelo uso da Steam.
+
+O documento público reúne site e jogos em sete seções, com texto equivalente em PT-BR e EN. Não foram acrescentados Firebase, login de terceiros, IAP ou iOS com base nos documentos usados como referência visual/editorial. Os links antigos de site e publicidade foram preservados como acessos às seções da política geral.

@@ -6,6 +6,7 @@ import argparse
 import re
 import shutil
 import xml.etree.ElementTree as ET
+from locales import translations
 
 SOURCE = Path(__file__).resolve().parents[1] / "public"
 CSP = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'"
@@ -73,7 +74,11 @@ def prepare(base_url, output):
                     f'<meta property="og:url" content="{escape(canonical)}">',
                     '<meta name="referrer" content="strict-origin-when-cross-origin">',
                     f'<meta http-equiv="Content-Security-Policy" content="{escape(CSP, quote=True)}">']
-        if route == "404.html" or destination:
+        # As versões equivalentes têm URLs próprias e não dependem de JavaScript.
+        content = re.sub(r'<link rel="alternate" hreflang="[^"]*" href="[^"]*">\s*', "", content)
+        for language, translated_route in translations(relative.as_posix()).items():
+            metadata.append(f'<link rel="alternate" hreflang="{language}" href="{escape(base_url + translated_route)}">')
+        if relative.name == "404.html" or destination:
             metadata.append('<meta name="robots" content="noindex, follow">')
         else:
             urls.append(canonical)

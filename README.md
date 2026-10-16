@@ -1,13 +1,13 @@
 # Xblade Studios
 
-Site institucional em português brasileiro, com catálogo por plataforma, suporte e uma Política de Privacidade geral para os jogos do estúdio. HTML, CSS e JavaScript mínimo, sem npm, framework ou banco de dados. Hospedagem: **GitHub Pages**, com publicação por GitHub Actions.
+Site institucional em português brasileiro e inglês, com catálogo por plataforma, suporte, Política de Privacidade e Termos de Uso. HTML, CSS e JavaScript mínimo, sem npm, framework ou banco de dados. Hospedagem: **GitHub Pages**, com publicação por GitHub Actions.
 
 Repositório: [LeandroRogalaBritez/XbladeStudios](https://github.com/LeandroRogalaBritez/XbladeStudios).
 
 ## Ativar a primeira publicação
 
 1. Abra **Settings → Pages → Build and deployment → Source → GitHub Actions**.
-2. O repositório está privado. Pages exige um plano compatível para mantê-lo privado. No GitHub Free, exige repositório público; mudar a visibilidade também expõe código e histórico. O workflow não altera essa configuração.
+2. Para repositórios privados, Pages exige um plano compatível. No GitHub Free, exige repositório público; mudar a visibilidade também expõe código e histórico. O workflow não altera essa configuração. Neste projeto, o Pages já foi ativado e o repositório está público.
 3. Envie os arquivos para `main`. Se o commit já estiver no GitHub, abra **Actions → Publicar site no GitHub Pages → Run workflow → main → Run workflow**.
 4. Aguarde os três jobs: verificar, preparar e publicar. O job de publicação mostra o endereço final. Se houver uma regra de aprovação do ambiente `github-pages`, aprove a implantação no painel.
 5. Confira o site e a política sem login, HTTPS, links, imagens e uma URL inexistente.
@@ -73,11 +73,11 @@ Abra [http://127.0.0.1:4174/XbladeStudios/](http://127.0.0.1:4174/XbladeStudios/
 | `public/index.html` | Apresentação do estúdio |
 | `public/jogos/index.html` | Catálogo PC/Steam e Android |
 | `public/privacidade/index.html` | Política geral dos jogos |
-| `public/privacidade/site/` | Privacidade do site |
-| `public/privacidade/admob/` | Complemento sobre publicidade |
+| `public/privacidade/site/`, `admob/` | Links de compatibilidade para as seções da política geral |
 | `public/privacidade/purr-box/`, `normal-dev-guy/` | URLs antigas |
 | `public/suporte/`, `exclusao-de-dados/`, `termos/` | Páginas institucionais |
 | `public/assets/` | Marca, estilos, menu e imagens |
+| `public/en/` | Versão completa do site em inglês |
 | `tools/`, `tests/` | Prévia, pacote e verificações |
 | `docs/` | Fontes das artes, inventário e orientações |
 | `artifacts/` | Saídas e capturas ignoradas pelo Git |
@@ -89,6 +89,20 @@ Para adicionar um jogo, copie um `article.game-card` no catálogo nas plataforma
 A política geral se aplica aos jogos que a vinculam e às práticas descritas. Novos SDKs, mediação, contas, compras, nuvem própria ou direcionamento infantil exigem revisão antes do lançamento. Veja [o inventário](docs/PRIVACY-INVENTORY.md). Os projetos dos jogos não foram alterados; o link dentro dos apps ainda deve ser integrado e testado.
 
 Contato público: `leandrorogalabritezltda@gmail.com`. Artes em [ASSETS.md](docs/ASSETS.md). Cabeçalhos e rodapés são replicados entre páginas; atualize todas as ocorrências. Ao alterar CSS, atualize o sufixo `?v=` para evitar cache antigo.
+
+## Idiomas e documentos
+
+Todas as páginas têm versões PT-BR e EN. O seletor no cabeçalho abre a página equivalente, sem depender de JavaScript, cookies ou detecção automática. Os endereços em português foram preservados; inglês fica em `/en/`, com `/en/games/`, `/en/support/`, `/en/privacy/`, `/en/terms/` e `/en/data-deletion/`.
+
+As equivalências ficam em `tools/locales.py`. Ao criar uma página, crie os dois HTMLs, registre o par e inclua os links de idioma no cabeçalho e os metadados `hreflang`. Atualize o conteúdo nos dois idiomas. A validação detecta traduções ausentes e idiomas incorretos; o pacote gera alternates absolutos com o prefixo correto do Pages. As duas versões de 404 ficam fora da indexação; a 404 automática do GitHub usa o arquivo da raiz, com seletor para inglês.
+
+A política foi simplificada e reúne dados locais, AdMob, Steam, tecnologia Unity quando utilizada, navegação no site, suporte, segurança e exclusão. Os caminhos antigos sobre site e AdMob apontam às seções correspondentes. Os termos descrevem jogos Android gratuitos com anúncios e sem compras internas nas versões atuais. Transações e serviços Steam seguem as condições da plataforma; o site não vende ou recebe pagamentos.
+
+URLs em inglês após implantação:
+
+- [Site](https://leandrorogalabritez.github.io/XbladeStudios/en/).
+- [Privacy Policy](https://leandrorogalabritez.github.io/XbladeStudios/en/privacy/).
+- [Terms of Use](https://leandrorogalabritez.github.io/XbladeStudios/en/terms/).
 
 ## app-ads.txt no GitHub Pages
 

@@ -4,6 +4,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 import argparse
 import sys
+from locales import PAGE_PAIRS
 
 ROOT = Path(__file__).resolve().parents[1] / "public"
 
@@ -42,7 +43,8 @@ def check(root=ROOT, base_path="", production=False):
         label = str(path.relative_to(root))
         errors.extend(f"{label}: {e}" for e in doc.errors)
         if doc.h1 != 1: errors.append(f"{label}: esperado um h1")
-        if doc.lang != "pt-BR": errors.append(f"{label}: idioma incorreto")
+        expected_lang = "en" if path.relative_to(root).parts[0] == "en" else "pt-BR"
+        if doc.lang != expected_lang: errors.append(f"{label}: idioma incorreto (esperado {expected_lang})")
         if not doc.title or not doc.metas.get("description"): errors.append(f"{label}: metadados ausentes")
         if not production and "noindex" not in doc.metas.get("robots", ""): errors.append(f"{label}: prévia sem noindex")
         if production and path.name != "404.html" and not doc.metas.get("og:url"):
@@ -74,6 +76,9 @@ def check(root=ROOT, base_path="", production=False):
                 errors.append(f"{label}: destino inexistente: {href}")
             elif u.fragment and target in docs and unquote(u.fragment) not in docs[target].ids:
                 errors.append(f"{label}: âncora inexistente: {href}")
+    for portuguese, english in PAGE_PAIRS.items():
+        if root / portuguese not in docs or root / english not in docs:
+            errors.append(f"Tradução ausente: {portuguese} / {english}")
     for url in sorted(external): print(f"EXTERNO (revisão independente): {url}")
     if errors:
         print("\n".join(errors))
