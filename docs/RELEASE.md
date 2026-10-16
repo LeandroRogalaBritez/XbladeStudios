@@ -47,3 +47,9 @@ Os testes locais não comprovam disponibilidade mundial, aprovação de loja ou 
 - O GitHub Pages não oferece `_headers` ou regras `_redirects` personalizadas. O pacote usa CSP por meta tag e redirecionamentos HTML; as antigas URLs não retornam um HTTP 301 personalizado.
 - Testes de publicação cobrem a raiz de domínio e `/Studio/`, assets da 404, URLs antigas, sitemap, exclusão de arquivos internos e proteção dos arquivos de origem.
 - `app-ads.txt` exige a raiz do domínio; o prefixo `/XbladeStudios/` não atende essa descoberta. Alternativas documentadas no README.
+
+## Primeira execução no GitHub
+
+Workflow enviado para `main` no commit `c7a0ea0`. A [execução 38833385749](https://github.com/LeandroRogalaBritez/XbladeStudios/actions/runs/38833385749) passou na validação de páginas e nos seis testes em Ubuntu/Python 3.13. A preparação parou em `actions/configure-pages` porque o site Pages não existe/está desativado (API retornou `Not Found`). O deploy não foi executado.
+
+Ative **Settings → Pages → Source: GitHub Actions**, com plano/visibilidade compatíveis, e execute o workflow manualmente. O navegador disponível estava sem sessão GitHub; nenhuma configuração da conta ou visibilidade foi alterada. O pacote também foi conferido localmente em `/XbladeStudios/`: imagens e estilos carregaram, a URL antiga encaminhou à política geral e a 404 em rota profunda retornou ao início corretamente.
