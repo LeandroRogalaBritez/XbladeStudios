@@ -1,6 +1,6 @@
 # Estado da entrega — 15/10/2026
 
-Prévia local em HTML, CSS e JavaScript mínimo. Repositório Git local na branch main, sem commit, remoto ou push. Não há publicação pública do site.
+Site em HTML, CSS e JavaScript mínimo. Remoto GitHub `LeandroRogalaBritez/XbladeStudios`, branch `main`. Publicação preparada por GitHub Actions; o repositório foi encontrado privado e com Pages desativado. A primeira implantação depende da ativação do Pages e da compatibilidade do plano/visibilidade.
 
 ## Estrutura atual
 
@@ -9,7 +9,7 @@ Prévia local em HTML, CSS e JavaScript mínimo. Repositório Git local na branc
 - Alerta: Terra incluído apenas em Android, conforme orientação do usuário, embora o projeto também possua variantes técnicas para outras plataformas.
 - Uma política geral dos jogos em `/privacidade/`, com seções por serviços e plataforma.
 - Política do site separada; suporte e orientações sobre dados falam dos jogos do estúdio.
-- Caminhos antigos de privacidade preservados com redirecionamentos preparados para o Cloudflare Pages.
+- Caminhos antigos de privacidade preservados com redirecionamento HTML no pacote do GitHub Pages e link acessível sem JavaScript.
 - As versões Android estão identificadas como em preparação; não foram fornecidas URLs públicas de Google Play.
 - Artes copiadas e otimizadas dos próprios projetos. Originais e projetos dos jogos permanecem intactos.
 
@@ -24,8 +24,10 @@ A revisão de fontes dos três jogos identificou os componentes e as diferenças
 - [ ] Aprovar identidade e textos; confirmar contato, responsável e a operação de retenção/exclusão de mensagens.
 - [ ] Verificar SDKs, permissões e tráfego dos binários de produção, incluindo diagnósticos da Unity.
 - [ ] Obter links públicos das versões Android quando estiverem disponíveis.
-- [ ] Criar remoto GitHub e conectar Cloudflare Pages após a revisão.
-- [ ] Configurar domínio real, metadados absolutos e indexação das páginas aprovadas.
+- [x] Preparar workflow GitHub Actions com validação, pacote estático e implantação Pages.
+- [x] Gerar caminhos para subdiretório, metadados absolutos, sitemap e indexação no pacote de produção.
+- [ ] Ativar Pages com origem GitHub Actions; confirmar plano compatível com repositório privado ou autorizar mudança de visibilidade.
+- [ ] Confirmar primeira implantação e endereço final no GitHub.
 - [ ] Verificar HTTPS, leitura sem login e acesso por outras redes/regiões.
 - [ ] Inserir a mesma URL geral de privacidade dentro de cada app e cadastrá-la nas lojas.
 - [ ] Conferir consentimento e declarações por aplicativo nos painéis.
@@ -42,4 +44,6 @@ Os testes locais não comprovam disponibilidade mundial, aprovação de loja ou 
 - Catálogo conferido visualmente em 1440 px e 390 px. Inicial, catálogo e política geral foram verificados em 320 px sem rolagem horizontal.
 - As páginas institucionais e a política geral não contêm lista fixa de títulos. Os nomes aparecem no catálogo.
 - Captura do catálogo Android: `artifacts/catalog-android.jpg`, fora da pasta publicada.
-- Os redirecionamentos 301 e headers precisam de validação no Cloudflare; o servidor Python mostra páginas de compatibilidade com link para a política geral.
+- O GitHub Pages não oferece `_headers` ou regras `_redirects` personalizadas. O pacote usa CSP por meta tag e redirecionamentos HTML; as antigas URLs não retornam um HTTP 301 personalizado.
+- Testes de publicação cobrem a raiz de domínio e `/Studio/`, assets da 404, URLs antigas, sitemap, exclusão de arquivos internos e proteção dos arquivos de origem.
+- `app-ads.txt` exige a raiz do domínio; o prefixo `/XbladeStudios/` não atende essa descoberta. Alternativas documentadas no README.

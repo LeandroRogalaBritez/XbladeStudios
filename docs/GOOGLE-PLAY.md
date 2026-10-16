@@ -1,6 +1,6 @@
 # Política geral no Google Play
 
-A Xblade Studios utilizará **um único endereço de Política de Privacidade para seus jogos**: o domínio de produção real seguido de `/privacidade/`.
+A Xblade Studios utilizará **um único endereço de Política de Privacidade para seus jogos**. No GitHub Pages deste projeto, o endereço esperado é `https://leandrorogalabritez.github.io/XbladeStudios/privacidade/`, disponível após a primeira implantação bem-sucedida.
 
 O documento identifica o estúdio e descreve dados locais, Google AdMob/UMP, Unity, Steam, contato, compartilhamento, segurança, retenção e direitos. As diferenças de cada versão estão descritas por serviços e plataformas; o catálogo em `/jogos/` informa os jogos, as plataformas e os serviços verificados.
 
@@ -9,9 +9,9 @@ O Google exige que a política seja aplicável ao app, identifique o desenvolved
 ## Publicar e cadastrar
 
 1. Revise os textos e o comportamento do APK/AAB final, incluindo SDKs, permissões, consentimento e diagnósticos.
-2. Publique `public/` no Cloudflare Pages conforme o README.
-3. Abra `https://DOMINIO_REAL/privacidade/` sem login. O domínio em maiúsculas é ilustrativo; não foi reservado. Valide SSL, HTTP 200, HTML legível e acesso em outras redes/regiões.
-4. Mantenha o endereço sem senha, Access, restrição por país ou bloqueio de leitura.
+2. Ative GitHub Pages com origem **GitHub Actions** e execute o workflow conforme o README. Ele publica o pacote gerado, com os caminhos ajustados ao projeto.
+3. Abra `https://leandrorogalabritez.github.io/XbladeStudios/privacidade/` sem login, após a implantação. Valide SSL, HTTP 200, HTML legível e acesso em outras redes/regiões. Se configurar domínio próprio, use o endereço final mostrado no deploy seguido de `/privacidade/`.
+4. Mantenha o site público, sem senha, restrição por país ou bloqueio de leitura. A privacidade do repositório é diferente da visibilidade do site.
 5. No Play Console de cada jogo abrangido, use **Políticas e programas → Conteúdo do app → Política de Privacidade → Iniciar/Gerenciar** e informe a URL geral publicada.
 6. Confira o link na página de detalhes e mantenha Segurança dos dados, Contém anúncios e público-alvo coerentes com cada aplicativo.
 
